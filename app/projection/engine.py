@@ -21,6 +21,7 @@ not present in the output at all (they are not nulled out).
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from pydantic import BaseModel
@@ -74,6 +75,7 @@ class ProjectionEngine:
             to the projection config.  Never raises.
         """
         fields: dict[str, Any] = {}
+        included_sources = {pf.source for pf in self._config.fields if pf.include}
 
         for pf in self._config.fields:
             if not pf.include:
@@ -82,11 +84,15 @@ class ProjectionEngine:
             value = raw if raw is not None else pf.default
             fields[pf.output_name] = _serialize(value)
 
+        filtered_confidence = _filter_confidence(confidence, included_sources)
+        filtered_provenance = _filter_provenance(provenance, included_sources, self._config.include_provenance)
+        filtered_validation = _filter_validation(validation, included_sources, self._config.include_validation)
+
         profile = CandidateProfile(
             fields=fields,
-            confidence=confidence if self._config.include_confidence else None,
-            provenance=(provenance or []) if self._config.include_provenance else [],
-            validation=validation if self._config.include_validation else None,
+            confidence=filtered_confidence if self._config.include_confidence else None,
+            provenance=filtered_provenance,
+            validation=filtered_validation,
         )
 
         logger.debug(
@@ -111,3 +117,72 @@ def _serialize(value: Any) -> Any:
     if isinstance(value, list):
         return [_serialize(item) for item in value]
     return value
+
+
+def _filter_confidence(
+    confidence: ConfidenceReport | None,
+    included_sources: set[str],
+) -> ConfidenceReport | None:
+    if confidence is None:
+        return None
+    if not included_sources:
+        return confidence
+
+    return confidence.model_copy(
+        update={
+            "field_scores": [
+                fs for fs in confidence.field_scores if fs.field_name in included_sources
+            ],
+            "explanations": _filter_explanations(confidence.explanations, included_sources),
+        }
+    )
+
+
+def _filter_provenance(
+    provenance: list[ProvenanceEntry] | None,
+    included_sources: set[str],
+    include_provenance: bool,
+) -> list[ProvenanceEntry]:
+    if not include_provenance or provenance is None:
+        return []
+    if not included_sources:
+        return provenance
+    return [entry for entry in provenance if entry.field_name in included_sources]
+
+
+def _filter_validation(
+    validation: ValidationResult | None,
+    included_sources: set[str],
+    include_validation: bool,
+) -> ValidationResult | None:
+    if not include_validation or validation is None:
+        return None
+    if not included_sources:
+        return validation
+
+    issues = [
+        issue
+        for issue in validation.issues
+        if issue.field.startswith("confidence.") or issue.field in included_sources
+    ]
+    return validation.model_copy(update={"issues": issues})
+
+
+def _filter_explanations(explanations: list[str], included_sources: set[str]) -> list[str]:
+    if not explanations or not included_sources:
+        return explanations
+
+    excluded = {
+        field
+        for field in ("name", "email", "phone", "location", "summary", "skills", "experience", "education", "links")
+        if field not in included_sources
+    }
+    if not excluded:
+        return explanations
+
+    filtered: list[str] = []
+    for line in explanations:
+        if any(re.search(rf"\b{re.escape(field)}\b", line) for field in excluded):
+            continue
+        filtered.append(line)
+    return filtered
