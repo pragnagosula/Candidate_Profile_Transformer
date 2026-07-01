@@ -30,6 +30,7 @@ logger = get_logger(__name__)
 
 _DEFAULT_CONFIG_DIR = Path(__file__).resolve().parents[2] / "config"
 _DEFAULT_PIPELINE_YAML = _DEFAULT_CONFIG_DIR / "pipeline.yaml"
+_PROJECTION_KEYS = {"fields", "include_confidence", "include_provenance", "include_validation"}
 
 
 def _load_yaml(path: Path) -> dict:
@@ -66,9 +67,21 @@ def _build_config(pipeline_path: Path) -> PipelineConfig:
     config_dir = pipeline_path.parent
     pipeline_raw = _load_yaml(pipeline_path)
 
+    # Allow a standalone projection YAML file to be passed as the config path.
+    # In that case, the projection keys live at the top level instead of under
+    # a nested ``projection`` block.
+    projection_raw: dict = {}
+    if isinstance(pipeline_raw.get("projection"), dict):
+        projection_raw = dict(pipeline_raw.pop("projection"))
+    else:
+        projection_raw = {key: pipeline_raw[key] for key in _PROJECTION_KEYS if key in pipeline_raw}
+
+    for key in _PROJECTION_KEYS:
+        pipeline_raw.pop(key, None)
+
     merge_raw = _load_yaml(config_dir / "merge_rules.yaml")
     norm_raw = _load_yaml(config_dir / "normalization.yaml")
-    proj_raw = _load_yaml(config_dir / "projection.yaml")
+    proj_raw = projection_raw or _load_yaml(config_dir / "projection.yaml")
     reliability_raw = _load_yaml(config_dir / "source_reliability.yaml")
     entity_raw = _load_yaml(config_dir / "entity_resolution.yaml")
 
