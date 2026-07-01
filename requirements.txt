@@ -8,7 +8,8 @@ pypdf>=3.17.0
 
 # Fuzzy matching (entity resolution)
 rapidfuzz>=3.6.1
-
+# Templates
+jinja2>=3.1.3
 # Config
 pyyaml>=6.0.1
 
@@ -24,6 +25,7 @@ rich>=13.7.0
 
 # API (bonus)
 fastapi>=0.109.0
+python-multipart>=0.0.9
 uvicorn[standard]>=0.27.0
 
 # Testing
