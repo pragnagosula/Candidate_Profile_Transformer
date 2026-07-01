@@ -14,27 +14,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [System Architecture](#-system-architecture)
-- [Folder Structure](#-folder-structure)
-- [Tech Stack](#-tech-stack)
-- [Installation](#-installation)
-- [Running the Project](#-running-the-project)
-- [Supported Input Formats](#-supported-input-formats)
-- [Expected Output](#-expected-output)
-- [Confidence Engine](#-confidence-engine)
-- [Provenance Engine](#-provenance-engine)
-- [Validation Engine](#-validation-engine)
-- [Screenshots](#-screenshots)
-- [Future Improvements](#-future-improvements)
-- [Author](#-author)
-- [License](#-license)
-
----
-
 ## 🌟 Overview
 
 **Candidate Profile Transformer** is a production-grade data pipeline that ingests candidate information from heterogeneous sources — PDF resumes, CSV ATS exports, JSON API payloads, and plain-text resumes — and fuses them into a single, validated, confidence-scored **Unified Candidate Profile**.
