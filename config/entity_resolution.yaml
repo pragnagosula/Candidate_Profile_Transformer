@@ -1,0 +1,8 @@
+# Thresholds for fuzzy matching during entity resolution.
+# Lower thresholds = more aggressive merging (risk of false positives).
+# Higher thresholds = more conservative (risk of missed duplicates).
+
+name_similarity_threshold: 0.85
+email_exact_match: true
+skill_similarity_threshold: 0.80
+company_similarity_threshold: 0.80

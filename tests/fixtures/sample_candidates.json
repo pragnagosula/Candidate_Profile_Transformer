@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Alice Johnson",
+    "email": "ALICE@EXAMPLE.COM",
+    "phone": "(+91)9876543210",
+    "location": "Bengaluru, Karnataka",
+    "skills": ["Python", "ML", "Deep Learning", "SQL"],
+    "summary": "Data scientist with 4 years of experience in ML pipelines.",
+    "experience": [
+      {
+        "company": "Acme Analytics",
+        "title": "Senior Data Scientist",
+        "start": "2021-03",
+        "end": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Bombay",
+        "degree": "B.Tech",
+        "field": "Computer Science",
+        "year": "2020"
+      }
+    ]
+  },
+  {
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "phone": "9876543210",
+    "location": "Mumbai",
+    "skills": ["JavaScript", "React", "NodeJS"],
+    "summary": "Full stack developer specialising in React and Node."
+  }
+]

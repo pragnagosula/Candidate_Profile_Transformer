@@ -1,0 +1,38 @@
+# Core
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# PDF parsing
+pdfplumber>=0.10.3
+pypdf>=3.17.0
+
+# Fuzzy matching (entity resolution)
+rapidfuzz>=3.6.1
+
+# Config
+pyyaml>=6.0.1
+
+# Date parsing
+python-dateutil>=2.8.2
+
+# Phone normalization
+phonenumbers>=8.13.26
+
+# CLI
+click>=8.1.7
+rich>=13.7.0
+
+# API (bonus)
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Testing
+pytest>=7.4.4
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Type checking
+mypy>=1.8.0
+
+# Code quality
+ruff>=0.1.14

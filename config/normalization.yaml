@@ -1,0 +1,74 @@
+# Normalization rules applied to raw extracted values.
+
+phone:
+  default_country_code: "IN"
+  output_format: "E164"      # E164 | NATIONAL | INTERNATIONAL
+
+dates:
+  output_format: "YYYY-MM"
+  assume_day: 1              # When only month/year is present
+
+normalize_whitespace: true
+strip_unicode: false
+
+skills:
+  case_sensitive: false
+  synonyms:
+    "Machine Learning":
+      - "ML"
+      - "machine learning"
+      - "machine-learning"
+      - "MachineLearning"
+    "Deep Learning":
+      - "DL"
+      - "deep learning"
+      - "deep-learning"
+    "Natural Language Processing":
+      - "NLP"
+      - "natural language processing"
+      - "nlp"
+    "Python":
+      - "python3"
+      - "python 3"
+      - "py"
+    "JavaScript":
+      - "JS"
+      - "js"
+      - "javascript"
+    "TypeScript":
+      - "TS"
+      - "ts"
+      - "typescript"
+    "React":
+      - "ReactJS"
+      - "React.js"
+      - "react"
+    "Node.js":
+      - "NodeJS"
+      - "Node"
+      - "nodejs"
+    "PostgreSQL":
+      - "Postgres"
+      - "postgres"
+      - "postgresql"
+    "Amazon Web Services":
+      - "AWS"
+      - "aws"
+    "Google Cloud Platform":
+      - "GCP"
+      - "gcp"
+      - "Google Cloud"
+    "Microsoft Azure":
+      - "Azure"
+      - "azure"
+    "Kubernetes":
+      - "K8s"
+      - "k8s"
+    "Docker":
+      - "docker"
+      - "Docker Container"
+    "Continuous Integration":
+      - "CI"
+      - "ci"
+      - "CI/CD"
+      - "cicd"

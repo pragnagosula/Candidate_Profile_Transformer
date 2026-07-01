@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Data Transformer — Eightfold</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <div>
+        <h1>Candidate Data Transformer</h1>
+        <p class="subtitle">Parse, normalise, deduplicate and enrich candidate profiles from multiple sources.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ── Upload Form ───────────────────────────────────────────── -->
+  <section class="card" id="upload-section">
+    <h2>Upload Candidate Data</h2>
+
+    <form id="upload-form" novalidate>
+
+      <!-- Candidate files -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label-text">Candidate Files <span class="required">*</span></span>
+          <span class="hint">CSV · JSON · PDF · DOCX · TXT</span>
+        </div>
+
+        <div class="drop-zone" id="drop-zone" role="button" tabindex="0"
+             aria-label="Click or drag files to upload">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M16 12l-4-4-4 4M12 8v8"/>
+          </svg>
+          <p class="drop-text">Drag &amp; drop files here, or <span class="link-text">click to browse</span></p>
+          <p class="drop-hint">Recruiter CSV, Resume PDF, LinkedIn JSON, or plain text</p>
+          <input type="file" id="candidate-files" accept=".csv,.json,.pdf,.docx,.txt" multiple hidden>
+        </div>
+
+        <div class="file-list" id="file-list" aria-live="polite"></div>
+      </div>
+
+      <!-- Config file -->
+      <div class="field-group config-group">
+        <div class="field-label-row">
+          <span class="field-label-text">Configuration File <span class="optional">(optional)</span></span>
+          <span class="hint">YAML · JSON — uses default pipeline config if omitted</span>
+        </div>
+        <div class="config-row">
+          <label class="btn btn-secondary btn-sm config-pick-btn" for="config-file">
+            Choose file
+            <input type="file" id="config-file" accept=".yaml,.yml,.json" hidden>
+          </label>
+          <span class="config-filename" id="config-filename">No file chosen</span>
+        </div>
+        <p class="config-tip">
+          Tip: set <code>include_provenance: true</code> in your config to see field-level provenance.
+        </p>
+      </div>
+
+      <button type="submit" id="transform-btn" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        Transform Candidate
+      </button>
+
+    </form>
+  </section>
+
+  <!-- ── Progress ─────────────────────────────────────────────── -->
+  <section id="progress-section" class="progress-section hidden" aria-live="polite" aria-atomic="true">
+    <div class="spinner" aria-hidden="true"></div>
+    <p id="progress-message" class="progress-message">Processing…</p>
+  </section>
+
+  <!-- ── Error ────────────────────────────────────────────────── -->
+  <section id="error-section" class="card error-card hidden" aria-live="assertive">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:1.1em;vertical-align:-.15em">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      Error
+    </h2>
+    <p id="error-message"></p>
+    <button class="btn btn-secondary btn-sm" onclick="resetToForm()">Try Again</button>
+  </section>
+
+  <!-- ── Results ──────────────────────────────────────────────── -->
+  <div id="results-section" class="hidden" aria-live="polite">
+    <!-- Populated by app.js after a successful /transform call -->
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Eightfold Candidate Data Transformer</p>
+  </div>
+</footer>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "candidate": {
+    "name": "Gosula Mohana Sree Pragna",
+    "email": "pragnagosula@gmail.com",
+    "phone": "+91 8919955286",
+    "location": "Hyderabad, Telangana, India",
+
+    
+    "skills": [
+      "Python",
+      "FastAPI",
+      "Machine Learning",
+      "Deep Learning",
+      "Flask",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "Git",
+      "GitHub",
+      "Docker",
+      "REST APIs",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "OpenCV",
+      "TensorFlow"
+    ],
+
+    "experience": [
+      {
+        "company": "Infosys Springboard",
+        "title": "AI/ML Intern",
+        "location": "Remote",
+        "start_date": "2025-08",
+        "end_date": "2025-10",
+        "description": "Developed an AI-powered Loan Eligibility & Credit Underwriting System using Machine Learning and FastAPI."
+      },
+      {
+        "company": "Jaaji Technologies",
+        "title": "AI/ML Intern",
+        "location": "Hyderabad",
+        "start_date": "2025-06",
+        "end_date": "2025-07",
+        "description": "Built an anomaly detection platform using ASP.NET MVC, Python, Isolation Forest, STL and LSTM."
+      }
+    ],
+
+    "education": [
+      {
+        "institution": "Chaitanya Bharathi Institute of Technology",
+        "degree": "Bachelor of Engineering",
+        "field": "Computer Science and Engineering",
+        "start_year": 2023,
+        "end_year": 2027
+      }
+    ],
+
+    "certifications": [
+      {
+        "name": "Programming in Java",
+        "issuer": "NPTEL"
+      },
+      {
+        "name": "Machine Learning",
+        "issuer": "Internshala"
+      },
+      {
+        "name": "Google Cloud Computing Fundamentals",
+        "issuer": "Google Cloud"
+      }
+    ],
+
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/pragnagosula"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/pragnagosula"
+      },
+      {
+        "label": "LeetCode",
+        "url": "https://leetcode.com/u/pragnagosula"
+      },
+      {
+        "label": "CodeChef",
+        "url": "https://www.codechef.com/users/pragnagosula"
+      }
+    ],
+
+    "languages": [
+      "English",
+      "Telugu",
+      "Hindi"
+    ],
+
+    "achievements": [
+      "Solved 600+ DSA problems across LeetCode and CodeChef.",
+      "Silver Medal in NPTEL - Introduction to Programming in C."
+    ],
+
+    "position_of_responsibility": [
+      {
+        "role": "Content Associate",
+        "organization": "Ramanujan Maths Club",
+        "start_date": "2024-03",
+        "end_date": "Present"
+      }
+    ]
+  }
+}

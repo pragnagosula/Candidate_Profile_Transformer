@@ -1,0 +1,53 @@
+# Output projection configuration.
+# Controls which fields appear in the final JSON and their output names.
+# Set include: false to suppress a field without removing it from the pipeline.
+
+include_confidence: true
+include_provenance: false    # Set true for debugging / audit trails
+include_validation: true
+
+fields:
+  - source: name
+    output_name: full_name
+    include: true
+    default: null
+
+  - source: email
+    output_name: email_address
+    include: true
+    default: null
+
+  - source: phone
+    output_name: phone_number
+    include: true
+    default: null
+
+  - source: location
+    output_name: location
+    include: true
+    default: null
+
+  - source: summary
+    output_name: professional_summary
+    include: true
+    default: null
+
+  - source: skills
+    output_name: skills
+    include: true
+    default: []
+
+  - source: experience
+    output_name: work_experience
+    include: true
+    default: []
+
+  - source: education
+    output_name: education
+    include: true
+    default: []
+
+  - source: links
+    output_name: links
+    include: true
+    default: []

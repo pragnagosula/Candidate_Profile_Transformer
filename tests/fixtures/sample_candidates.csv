@@ -1,0 +1,5 @@
+name,email,phone,location,skills,linkedin
+Alice Johnson,alice@example.com,+91 98765-43210,Bangalore,"Python, Machine Learning, SQL",https://linkedin.com/in/alicejohnson
+Bob Smith,bob.smith@example.com,9876543210,Mumbai,"JavaScript, React, Node.js",https://linkedin.com/in/bobsmith
+Charlie Brown,,+1-800-555-0199,New York,"Java, Spring Boot",
+  ,   ,   ,  ,  ,

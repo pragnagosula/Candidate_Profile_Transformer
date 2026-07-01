@@ -1,0 +1,11 @@
+# Reliability weight (0.0 – 1.0) for each source.
+# Higher weight = source values are preferred during merge
+# and contribute more to confidence scoring.
+weights:
+  ats:        0.95
+  linkedin:   0.90
+  resume_pdf: 0.85
+  github:     0.80
+  json:       0.75
+  csv:        0.70
+  unknown:    0.40

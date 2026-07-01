@@ -1,0 +1,54 @@
+# Per-field merge priority and conflict resolution strategy.
+#
+# Strategies:
+#   priority     – Pick value from the highest-priority source that has it.
+#   most_complete – Pick the longest / most-populated value.
+#   union        – Combine values from all sources (for list fields).
+#
+# Sources are listed highest → lowest priority.
+
+default_priority:
+  - ats
+  - resume_pdf
+  - linkedin
+  - json
+  - csv
+
+default_strategy: priority
+
+field_rules:
+  name:
+    priority: [resume_pdf, linkedin, ats, json, csv]
+    strategy: priority
+
+  email:
+    priority: [csv, json, ats, resume_pdf, linkedin]
+    strategy: priority
+
+  phone:
+    priority: [csv, resume_pdf, json, linkedin, ats]
+    strategy: most_complete
+
+  location:
+    priority: [linkedin, resume_pdf, ats, json, csv]
+    strategy: priority
+
+  summary:
+    priority: [resume_pdf, linkedin, json, csv]
+    strategy: most_complete
+
+  skills:
+    priority: [resume_pdf, linkedin, ats, json, csv]
+    strategy: union
+
+  experience:
+    priority: [resume_pdf, linkedin, ats]
+    strategy: union
+
+  education:
+    priority: [resume_pdf, linkedin, ats]
+    strategy: union
+
+  links:
+    priority: [linkedin, github, resume_pdf, csv, json]
+    strategy: union

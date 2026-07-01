@@ -1,0 +1,4 @@
+version: "1.0.0"
+log_level: "INFO"
+output_dir: "output"
+output_filename: "candidate_profile.json"

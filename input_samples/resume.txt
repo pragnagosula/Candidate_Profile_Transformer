@@ -1,0 +1,59 @@
+Gosula Mohana Sree Pragna
+Phone: +91 8919955286
+Email: pragnagosula@gmail.com
+Education
+Chaitanya Bharathi Institute of Technology, Hyderabad
+Bachelor of Engineering (B.E.) in Computer Science & Engineering
+Personal Projects
+Integrated Healthcare Management System
+Technologies: Flask, MongoDB Atlas, Gemini AI, REST APIs, Python
+- Developed an AI-powered platform for symptom analysis and medicine lookup.
+- Built REST APIs for real-time access to medicine records using MongoDB Atlas.
+- Integrated Gemini AI for natural-language symptom interpretation.
+Crowdsourced Civic Issue Reporting & Resolution System
+Technologies: React.js, Node.js, Express.js, PostgreSQL, Python, FastAPI
+- Developed a civic issue reporting system with image, GPS, and voice/text support.
+- Implemented AI-based verification and duplicate issue detection using Python.
+- Designed automated issue tracking and assignment workflows.
+Gender and Age Prediction using Machine Learning
+Technologies: Machine Learning, CNN, Python, OpenCV
+- Built a CNN model using the UTKFace dataset for age and gender prediction.
+- Applied preprocessing and augmentation techniques to improve model performance.
+- Optimized hyperparameters to enhance prediction accuracy and reduce overfitting.
+Work Experience
+Infosys Springboard
+Role: AI/ML Intern (Virtual Internship 6.0)
+Duration: Aug 2025 - Oct 2025
+- Developed an AI-Powered Loan Eligibility & Credit Underwriting System using ML classification algorithms and FastAPI.
+- Performed preprocessing, feature engineering, and model optimization using GridSearchCV for real-time loan prediction.
+
+Jaaji Technologies
+Role: AI/ML Intern
+Duration: June 2025 - July 2025
+Location: On-Site
+- Built an Anomaly Detection Platform using ASP.NET MVC, Python, and Chart.js for sensor data analysis.
+- Implemented ML models including Isolation Forest, STL, and LSTM with automated PDF/Excel reporting.
+Technical Skills and Coursework
+Programming Languages:
+Python, C, JavaScript
+Frameworks:
+React.js, Flask, Node.js, Express.js, ASP.NET MVC
+Libraries:
+Scikit-learn, Pandas, NumPy, Matplotlib
+Databases:
+MySQL, SQLite3, MongoDB
+Developer Tools:
+Git, GitHub, VS Code, Visual Studio
+Core Computer Science:
+Data Structures, OOP, DBMS, Operating Systems, Computer Networks, Algorithms, System Design
+Machine Learning:
+Supervised Learning, Unsupervised Learning, CNNs
+Achievements
+- Solved 600+ DSA Problems across LeetCode (Rating: 1526) and CodeChef (Rating: 1476).
+- Silver Medal - NPTEL: Introduction to Programming in C.
+Position of Responsibility
+Content Associate
+Ramanujan Maths Club (CBIT)
+Duration: Mar 2024 - Present
+- Authored engaging technical content.
+- Coordinated outreach initiatives for mathematics-based events.
