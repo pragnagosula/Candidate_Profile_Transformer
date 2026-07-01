@@ -60,7 +60,7 @@ def _invoke(*args: str, pipeline_result: PipelineResult | None = None) -> object
     if pipeline_result is None:
         pipeline_result = _result()
 
-    runner = CliRunner(mix_stderr=False)
+    runner = CliRunner()
     with patch("app.cli.Pipeline") as mock_cls:
         mock_cls.return_value.run.return_value = pipeline_result
         return runner.invoke(main_cli, list(args)), mock_cls
@@ -73,19 +73,19 @@ def _invoke(*args: str, pipeline_result: PipelineResult | None = None) -> object
 
 class TestNoInputs:
     def test_no_args_exits_nonzero(self):
-        runner = CliRunner(mix_stderr=False)
+        runner = CliRunner()
         result = runner.invoke(main_cli, [])
         assert result.exit_code != 0
 
     def test_no_args_error_mentions_csv_flag(self):
-        runner = CliRunner(mix_stderr=False)
+        runner = CliRunner()
         result = runner.invoke(main_cli, [])
-        assert "--csv" in result.stderr or "--csv" in (result.output or "")
+        assert "--csv" in (result.output or "")
 
     def test_no_args_error_mentions_json_flag(self):
-        runner = CliRunner(mix_stderr=False)
+        runner = CliRunner()
         result = runner.invoke(main_cli, [])
-        combined = (result.stderr or "") + (result.output or "")
+        combined = result.output or ""
         assert "--json" in combined or "--pdf" in combined
 
 
@@ -209,15 +209,15 @@ class TestExitCodesAndMessages:
             "--csv", "data.csv",
             pipeline_result=_result(errors=["disk failure"]),
         )
-        assert "disk failure" in cli_result.stderr
+        assert "disk failure" in (cli_result.output or "")
 
     def test_multiple_errors_all_printed(self):
         cli_result, _ = _invoke(
             "--csv", "data.csv",
             pipeline_result=_result(errors=["err1", "err2"]),
         )
-        assert "err1" in cli_result.stderr
-        assert "err2" in cli_result.stderr
+        assert "err1" in (cli_result.output or "")
+        assert "err2" in (cli_result.output or "")
 
 
 # ---------------------------------------------------------------------------
@@ -236,7 +236,7 @@ class TestVerboseAndConfig:
 
     def test_config_flag_triggers_custom_config(self):
         """--config should invoke Pipeline with a custom PipelineConfig."""
-        runner = CliRunner(mix_stderr=False)
+        runner = CliRunner()
         pipeline_result = _result()
 
         with patch("app.cli.Pipeline") as mock_cls, \
@@ -249,7 +249,7 @@ class TestVerboseAndConfig:
         mock_get_config.assert_called_once_with("custom.yaml")
 
     def test_config_shorthand_accepted(self):
-        runner = CliRunner(mix_stderr=False)
+        runner = CliRunner()
         pipeline_result = _result()
 
         with patch("app.cli.Pipeline") as mock_cls, \
