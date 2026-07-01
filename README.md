@@ -324,8 +324,8 @@ eightfold/
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/ai-candidate-profile-transformer.git
-cd ai-candidate-profile-transformer
+https://github.com/pragnagosula/Candidate_Profile_Transformer.git
+cd Candidate_Profile_Transformer
 ```
 
 **2. Create a virtual environment**
